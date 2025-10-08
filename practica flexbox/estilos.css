@@ -1,0 +1,108 @@
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  width: 100%;
+  height: 100vh;
+} 
+
+ .container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 0.5fr 0.5fr;
+    gap: 10px;
+} 
+
+ .container div {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+}  */
+
+/* # Ejercicio
+
+Utilizando flex:
+- La celda 3 debe ocupar el doble de lo que ocupa la celda 1 y 2. No usar pixeles
+- La celda 6 debe ocupar el doble de lo que ocupa la ceda 4 y 5. No usar pixeles
+- Utilizar el ancho y alto de la pantalla como esta actualmente
+
+> No modificar absolutamente nada mas que lo pedido */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  width: 100%;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.container > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* 🔹 Gap vertical
+Es el espacio entre las filas (la separación entre la primera y la segunda fila).
+Solo hay uno, y ese es el 10px que restamos al calcular la altura: */
+  height: calc((100% - 10px) / 2);
+  background-color: tomato;
+}
+
+.container > div:nth-child(1),
+.container > div:nth-child(2),
+.container > div:nth-child(4),
+.container > div:nth-child(5) {
+  /* 🔹 Gap horizontal
+
+Es el espacio que aparece entre las columnas de cada fila.
+En tu layout hay 3 columnas por fila, por lo tanto hay 2 espacios horizontales entre ellas: */
+  width: calc((100% - 20px) / 4);
+}
+
+.container > div:nth-child(3),
+.container > div:nth-child(6) {
+  width: calc(((100% - 20px) / 4) * 2);
+}
+
+/* 🔹 Usando order para mover celdas */
+
+/* Queremos que Celda3 aparezca primera,
+
+Celda1 aparezca segunda,
+
+y así, solo modificando el orden con CSS. */
+
+.container > div:nth-child(3) {
+  order: 1;
+}
+
+.container > div:nth-child(1) {
+  order: 2;
+}
+
+.container > div:nth-child(2) {
+  order: 3;
+}
+
+.container > div:nth-child(4) {
+  order: 4;
+}
+.container > div:nth-child(5) {
+  order: 5;
+}
+.container > div:nth-child(6) {
+  order: 6;
+}

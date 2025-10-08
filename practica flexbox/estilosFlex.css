@@ -1,0 +1,185 @@
+/* Ejercicio 1 — “Layout 2 filas con proporciones”
+
+# Ejercicio 1 — Flex
+
+Utilizando flex:
+- La celda 2 debe ocupar el triple de lo que ocupa la celda 1.
+- La celda 5 debe ocupar el doble de lo que ocupa la celda 3 y 4.
+- La altura debe ocupar toda la pantalla (100vh).
+- Separación entre celdas: 12px (gap).
+- No usar pixeles para los tamaños relativos, solo fracciones (flex).
+- No modificar nada más que lo pedido.
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+main {
+  width: 100%;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.container > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc((100% - 12px) / 2);
+  background-color: teal;
+}
+
+/* Fila 1: Celda1 = 1 parte, Celda2 = 3 partes → 4 partes totales
+
+Total gap horizontal = 1 gap entre 2 celdas = 12px */
+
+.container > div:nth-child(1) {
+  width: calc((100% - 12px) / 4);
+}
+
+.container > div:nth-child(2) {
+  width: calc(((100% - 12px) / 4) * 3);
+}
+
+/* Fila 2: Celda3=1 parte, Celda4=1 parte
+Celda 5= 2 partes--->4 partes */
+
+/* Total gap horizontal= 2 gap entre 3 celdas =12px*2= 24 px */
+.container > div:nth-child(3),
+.container > div:nth-child(4) {
+  width: calc((100% - 24px) / 4);
+}
+
+.container > div:nth-child(5) {
+  width: calc(((100% - 24px) / 4) * 2);
+}
+
+/* No utlizamos flex(flex-grow), porque esta propiedad lo que hace cuando ponemos flex-wrap: wrap; es intentar encajar todas las celdas en la misma fila hasta que llenen el contenedor, por eso es mejor en ese caso utilizar dos div como contenedores para que por defecto haya dos filas y ahi si definir los anchos */
+
+/* .................................................. */
+
+/* # Ejercicio 2 — Flex
+
+- Tres filas.
+- Fila 1: 2 celdas, celda 2 doble de celda 1.
+- Fila 2: 3 celdas, todas iguales.
+- Fila 3: 2 celdas, celda 7 ocupa triple de celda 6.
+- Gap: 8px.
+- Altura total: 100vh.
+- Solo usar flex; no pixeles para proporciones.
+*/
+
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  width: 100%;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.container > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc((100% - 16px) / 3);
+  background-color: cadetblue;
+}
+
+.container > div:nth-child(1) {
+  width: calc((100% - 8px) / 3);
+}
+
+.container > div:nth-child(2) {
+  width: calc(((100% - 8px) / 3) * 2);
+}
+
+.container > div:nth-child(3),
+.container > div:nth-child(4),
+.container > div:nth-child(5) {
+  width: calc((100% - 16px) / 3);
+}
+
+.container > div:nth-child(6) {
+  width: calc((100% - 8px) / 4);
+}
+
+.container > div:nth-child(7) {
+  width: calc(((100% - 8px) / 4) * 3);
+} */
+
+/* # Ejercicio 3 — Flex
+
+- Cuatro filas.
+- Fila 1: una celda que ocupa todo el ancho.
+- Fila 2: dos celdas iguales.
+- Fila 3: tres celdas, la del medio doble de las otras dos.
+- Fila 4: una celda que ocupa todo el ancho.
+- Gap vertical y horizontal: 10px.
+- Altura: 100vh.
+- Solo usar flex; proporciones relativas (flex), no pixeles.
+*/
+
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  width: 100%;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.container > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc((100% - 30px) / 4);
+  background-color: blueviolet;
+}
+
+.container > div:nth-child(1) {
+  width: calc(100%);
+}
+
+.container > div:nth-child(2),
+.container > div:nth-child(3) {
+  width: calc((100% - 10px) / 2);
+}
+
+.container > div:nth-child(4),
+.container > div:nth-child(6) {
+  width: calc((100% - 20px) / 4);
+}
+
+.container > div:nth-child(5) {
+  width: calc(((100% - 20px) / 4) * 2);
+}
+
+.container > div:nth-child(7) {
+  width: calc(100%);
+} */
